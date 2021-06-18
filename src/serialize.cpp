@@ -1,4 +1,5 @@
 /*    Isolation forests and variations thereof, with adjustments for incorporation
+/*    Isolation forests and variations thereof, with adjustments for incorporation
 *     of categorical variables and missing values.
 *     Writen for C++11 standard and aimed at being used in R and Python.
 *     
@@ -50,7 +51,7 @@
 template <class T>
 void serialize_obj(T &obj, std::ostream &output)
 {
-    cereal::BinaryOutputArchive archive(output);
+    cereal::PortableBinaryOutputArchive archive(output);
     archive(obj);
 }
 template <class T>
@@ -58,7 +59,7 @@ std::string serialize_obj(T &obj)
 {
     std::stringstream ss;
     {
-        cereal::BinaryOutputArchive archive(ss);
+        cereal::PortableBinaryOutputArchive archive(ss);
         archive(obj);
     }
     return ss.str();
@@ -66,7 +67,7 @@ std::string serialize_obj(T &obj)
 template <class T, class I>
 void deserialize_obj(T &output, I &serialized)
 {
-    cereal::BinaryInputArchive archive(serialized);
+    cereal::PortableBinaryInputArchive archive(serialized);
     archive(output);
 }
 template <class T>
