@@ -46,7 +46,7 @@
 #include "isotree.hpp"
 
 #ifdef _ENABLE_CEREAL
-
+#include "cereal/archives/portable_binary.hpp"
 
 template <class T>
 void serialize_obj(T &obj, std::ostream &output)
