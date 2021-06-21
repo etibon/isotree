@@ -67,7 +67,7 @@ std::string serialize_obj(T &obj)
 template <class T, class I>
 void deserialize_obj(T &output, I &serialized)
 {
-    cereal::PortableBinaryInputArchive archive(serialized);
+    cereal::PortableBinaryInputArchive archive(serialized, cereal::PortableBinaryInputArchive::Options::BigEndian());
     archive(output);
 }
 template <class T>
