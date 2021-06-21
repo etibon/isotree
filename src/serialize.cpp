@@ -51,7 +51,7 @@
 template <class T>
 void serialize_obj(T &obj, std::ostream &output)
 {
-    cereal::PortableBinaryOutputArchive archive(output, cereal::PortableBinaryOutput::Options::BigEndian());
+    cereal::PortableBinaryOutputArchive archive(output, cereal::PortableBinaryOutputArchive::Options::BigEndian());
     archive(obj);
 }
 template <class T>
@@ -59,7 +59,7 @@ std::string serialize_obj(T &obj)
 {
     std::stringstream ss;
     {
-        cereal::PortableBinaryOutputArchive archive(ss, cereal::PortableBinaryOutput::Options::BigEndian());
+        cereal::PortableBinaryOutputArchive archive(ss, cereal::PortableBinaryOutputArchive::Options::BigEndian());
         archive(obj);
     }
     return ss.str();
